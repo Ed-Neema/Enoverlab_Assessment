@@ -1,9 +1,12 @@
 import styles from "./header.module.css";
 import Logo from "../../assets/logo.svg";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { TaskStateContext } from "../../context/TaskContext";
 
-const Header = ({handleAddTask}) => {
+const Header = () => {
+  // getting the context
+  const { addTask } = useContext(TaskStateContext);
   // state for title and description
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -17,7 +20,7 @@ const Header = ({handleAddTask}) => {
   // handling form submit
   function handleSubmit(event){
     event.preventDefault();
-    handleAddTask(title,description)
+    addTask(title, description);
     setTitle('');
     setDescription('');
   }

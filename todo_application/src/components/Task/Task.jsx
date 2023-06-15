@@ -1,14 +1,17 @@
+import { useContext } from "react";
 import styles from "./task.module.css";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { TbTrash } from "react-icons/tb";
+import { TaskStateContext } from "../../context/TaskContext";
 
-const Task = ({ task, onComplete, onDelete }) => {
+const Task = ({ task }) => {
+    const {toggleTaskCompletedById, deleteTaskById} = useContext(TaskStateContext);
   return (
     <div className={styles.task}>
       <div className={styles.miniContainer}>
         <button
           className={styles.checkContainer}
-          onClick={() => onComplete(task.id)}
+          onClick={() => toggleTaskCompletedById(task.id)}
         >
           {task.isCompleted ? <BsFillCheckCircleFill /> : <div />}
         </button>
@@ -23,7 +26,10 @@ const Task = ({ task, onComplete, onDelete }) => {
         </div>
       </div>
       {/* action */}
-      <button className={styles.deleteButton} onClick={()=> onDelete(task.id)}>
+      <button
+        className={styles.deleteButton}
+        onClick={() => deleteTaskById(task.id)}
+      >
         <TbTrash size={20} />
       </button>
     </div>
