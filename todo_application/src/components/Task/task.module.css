@@ -18,17 +18,24 @@
 }
 
 .taskbody {
-    margin-left: .8rem;
+    /* margin-left: .8rem; */
     display: flex;
     flex-direction: column;
     gap: .5rem;
 }
-
+.miniContainer{
+    display: flex;
+    gap: 1rem;
+}
 .taskbody h5 {
     color: #4EA8DE;
 }
 
 p.textCompleted {
+    color: #808080;
+    text-decoration: line-through;
+}
+h5.textCompleted {
     color: #808080;
     text-decoration: line-through;
 }
